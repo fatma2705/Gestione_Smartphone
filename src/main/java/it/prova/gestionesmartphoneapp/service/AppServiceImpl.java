@@ -6,6 +6,7 @@ import it.prova.gestionesmartphoneapp.dao.AppDAO;
 import it.prova.gestionesmartphoneapp.dao.EntityManagerUtil;
 import it.prova.gestionesmartphoneapp.model.App;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
 
 public class AppServiceImpl implements AppService {
 
@@ -122,30 +123,29 @@ public class AppServiceImpl implements AppService {
 
 	@Override
 	public void update(App appInstance) throws Exception {
-		entityManager = EntityManagerUtil.getEntityManager();
-		try {
-			if (appInstance.equals(null)) {
-				System.out.println("ERRORE: dati genere non inseriti");
-				System.exit(0);
-			}
-			entityManager.getTransaction().begin();
+	    EntityTransaction transaction = null;
+	    try {
+	        entityManager = EntityManagerUtil.getEntityManager();
+	        transaction = entityManager.getTransaction();
+	        transaction.begin();
 
-			appDaoInstance.setEntityManager(entityManager);
-			if (appDaoInstance.getElement(appInstance.getId()) == null) {
-				System.out.println("ERRORE: Non esiste un' app con questi dati ");
-				System.exit(0);
-			}
-			appDaoInstance.update(appInstance);
-			System.out.println(" app aggiornata con succcesso");
-			entityManager.getTransaction().commit();
-		} catch (Exception e) {
-			entityManager.getTransaction().rollback();
-			e.printStackTrace();
-			throw e;
-		} finally {
-			EntityManagerUtil.closeEntityManager(entityManager);
-		}
+	        if (appInstance == null) {
+	            System.out.println("ERRORE: dati app non inseriti");
+	            return;
+	        }
+	        appDaoInstance.update(appInstance);
 
+	        transaction.commit();
+	        System.out.println("App updated successfully.");
+	    } catch (Exception e) {
+	        if (transaction != null && transaction.isActive()) {
+	            transaction.rollback();
+	        }
+	        throw e;
+	    } finally {
+	        if (entityManager != null && entityManager.isOpen()) {
+	            entityManager.close();
+	        }
+	    }
 	}
-
 }

@@ -46,19 +46,22 @@ public class AppDAOImpl implements AppDAO {
 
 	@Override
 	public void update(App app) throws Exception {
-		try {
-			entityManager = EntityManagerUtil.getEntityManager();
-			if (app == null) {
-				throw new Exception("Impossibile eseguire l'update nel DB. Input non valido");
-			}
-			entityManager.merge(app);
-		} finally {
-			if (entityManager != null) {
-				entityManager.close();
-			}
-		}
+	    entityManager = EntityManagerUtil.getEntityManager();
+	    try {
+	        if (entityManager == null) {
+	            throw new IllegalStateException("EntityManager is null. Ensure it is set before calling update.");
+	        }
+	        //entityManager.joinTransaction();
+	        entityManager.merge(app);
+	        //entityManager.flush();
+	    } catch (Throwable e) {
+	        e.printStackTrace();
+	        throw e;
+	    }
 	}
 
+
+	
 	@Override
 	public void insert(App app) throws Exception {
 		try {

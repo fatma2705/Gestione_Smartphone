@@ -1,5 +1,8 @@
 package it.prova.gestionesmartphoneapp.test;
 
+import java.time.LocalDate;
+
+import it.prova.gestionesmartphoneapp.model.App;
 import it.prova.gestionesmartphoneapp.service.AppService;
 import it.prova.gestionesmartphoneapp.service.MyServiceFactory;
 import it.prova.gestionesmartphoneapp.service.SmartPhoneService;
@@ -41,15 +44,33 @@ public class TestGestioneSmartPhoneApp {
 		
 		
 		
-		System.out.println("--------------Test get element app metod-----------------");
+//		System.out.println("--------------Test get element app metod-----------------");
+//		
+//					try {
+//						System.out.println(appServiceInstance.getElemento(5L));
+//		
+//					} catch (Exception e) {
+//						e.printStackTrace();
+//					}
+//				}
+//	
+//	
 		
-					try {
-						System.out.println(appServiceInstance.getElemento(5L));
 		
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
+		System.out.println("--------------Test update element app metod-----------------");
+		
+		try {
+			 App app = new App(2L, "MrrrrrrrryApp", LocalDate.of(2022, 10, 15), LocalDate.of(2024, 4, 28), "1.2.3");
+			appServiceInstance.update(app);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+
+	
+	
 		
 		
 		
