@@ -28,19 +28,22 @@ public class App {
 	private LocalDate dataInstallazione;
 	@Column(name = "data_ultimo_aggiornamento")
 	private LocalDate dataUltimoAggiornamento;
+	@Column(name="versione")
+	private String versione;
 
-	@ManyToMany(mappedBy = "smartphones", fetch = FetchType.LAZY)
+	@ManyToMany(mappedBy = "apps", fetch = FetchType.LAZY)
 	private Set<SmartPhone> smartPhones = new HashSet<>();
 
 	public App() {
 
 	}
 
-	public App(Long id, String nome, LocalDate dataInstallazione, LocalDate dataUltimoAggiornamento) {
+	public App(Long id, String nome, LocalDate dataInstallazione, LocalDate dataUltimoAggiornamento,String versione) {
 		this.id = id;
 		this.nome = nome;
 		this.dataInstallazione = dataInstallazione;
 		this.dataUltimoAggiornamento = dataUltimoAggiornamento;
+		this.versione = versione;
 	}
 
 	public Long getId() {
@@ -82,11 +85,24 @@ public class App {
 	public void setSmartPhones(Set<SmartPhone> smartPhones) {
 		this.smartPhones = smartPhones;
 	}
+	
+	
+	
+
+	public String getVersione() {
+		return versione;
+	}
+
+	public void setVersione(String versione) {
+		this.versione = versione;
+	}
 
 	@Override
 	public String toString() {
 		return "App [id=" + id + ", nome=" + nome + ", dataInstallazione=" + dataInstallazione
-				+ ", dataUltimoAggiornamento=" + dataUltimoAggiornamento + "]";
+				+ ", dataUltimoAggiornamento=" + dataUltimoAggiornamento + ", versione=" + versione + ", smartPhones="
+				+ smartPhones + "]";
 	}
 
+	
 }

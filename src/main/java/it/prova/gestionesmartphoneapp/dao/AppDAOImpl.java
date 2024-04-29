@@ -19,7 +19,7 @@ public class AppDAOImpl implements AppDAO {
 	public List<App> getAll() throws Exception {
 		try {
 			entityManager = EntityManagerUtil.getEntityManager();
-			return entityManager.createQuery("SELECT DISTINCT a FROM App a JOIN FETCH a.smartphones ", App.class).getResultList();
+			return entityManager.createQuery("SELECT DISTINCT a FROM App a LEFT JOIN FETCH a.smartPhones ", App.class).getResultList();
 		} finally {
 			if (entityManager != null) {
 				entityManager.close();
