@@ -92,10 +92,23 @@ public class TestGestioneSmartPhoneApp {
 //					}
 
 		
-		System.out.println("--------------Test get by nome app metod-----------------");
+//		System.out.println("--------------Test get by nome app metod-----------------");
+//		
+//		try {
+//			appServiceInstance.getByNome("lukino");;
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+		
+		
+		System.out.println("--------------Test update versione e data aggiornamento app metod-----------------");
 		
 		try {
-			appServiceInstance.getByNome("lukino");;
+			
+			App app = new App(10L,LocalDate.of(2003, 05, 27),"3.363.9");
+			appServiceInstance.updateVersioneAppEDataAggiornamento(app);;
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();

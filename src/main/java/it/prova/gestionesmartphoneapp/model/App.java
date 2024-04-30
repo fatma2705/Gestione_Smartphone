@@ -50,6 +50,13 @@ public class App {
 		this.id = id;
 	}
 
+	public App(Long id, LocalDate dataUltimoAggiornamento, String versione) {
+		this.id = id;
+		this.dataUltimoAggiornamento = dataUltimoAggiornamento;
+		this.versione = versione;
+		
+	}
+
 	public Long getId() {
 		return id;
 	}

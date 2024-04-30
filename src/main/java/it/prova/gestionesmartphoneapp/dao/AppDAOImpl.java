@@ -70,4 +70,13 @@ public class AppDAOImpl implements AppDAO {
 
 	}
 
+	@Override
+	public void updateVersioneAppEDataAggiornamento(App app) throws Exception {
+		App existingApp = this.getElement(app.getId());
+		existingApp.setDataUltimoAggiornamento(app.getDataUltimoAggiornamento());
+		existingApp.setVersione(app.getVersione());
+		entityManager.merge(existingApp);
+		
+	}
+
 }

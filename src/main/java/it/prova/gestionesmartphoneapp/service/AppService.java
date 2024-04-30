@@ -18,6 +18,8 @@ public interface AppService {
 	public void update(App appInstance) throws Exception;
 	
 	public void getByNome(String nome) throws Exception;
+	
+	public void updateVersioneAppEDataAggiornamento(App app) throws Exception;
 
 	public void setAppDAO(AppDAO appInstance) throws Exception;
 

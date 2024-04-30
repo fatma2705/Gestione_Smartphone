@@ -172,4 +172,26 @@ public class AppServiceImpl implements AppService {
 			EntityManagerUtil.closeEntityManager(entityManager);
 		}
 	}
+
+	@Override
+	public void updateVersioneAppEDataAggiornamento(App app) throws Exception {
+		entityManager = EntityManagerUtil.getEntityManager();
+		try {
+			if(app.equals(null)) {
+				System.out.println("Non sono stati inseriti i dati dell'applicazione");
+				System.exit(0);
+			}
+			entityManager.getTransaction().begin();
+			appDaoInstance.setEntityManager(entityManager);
+			appDaoInstance.updateVersioneAppEDataAggiornamento(app);
+			entityManager.getTransaction().commit();
+			System.out.println("Versione e data aggiornamento aggiornate con successo");
+		} catch (Exception e) {
+			entityManager.getTransaction().rollback();
+			e.printStackTrace();
+			throw e;
+		} finally {
+			EntityManagerUtil.closeEntityManager(entityManager);
+		}
+	}
 }
