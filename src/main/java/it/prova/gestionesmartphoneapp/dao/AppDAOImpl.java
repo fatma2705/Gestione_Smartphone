@@ -24,10 +24,9 @@ public class AppDAOImpl implements AppDAO {
 
 	@Override
 	public List<App> getAll() throws Exception {
-
 		return entityManager.createQuery("SELECT DISTINCT a FROM App a LEFT JOIN FETCH a.smartPhones ", App.class)
 				.getResultList();
-	}
+		}
 
 	@Override
 	public App getElement(Long id) throws Exception {
@@ -39,25 +38,12 @@ public class AppDAOImpl implements AppDAO {
 
 	@Override
 	public void update(App app) throws Exception {
-		
 		entityManager.merge(app);
-
 	}
 
 	@Override
 	public void insert(App app) throws Exception {
-		try {
-
-			entityManager = EntityManagerUtil.getEntityManager();
-			if (app == null) {
-				throw new Exception("Errore valore input");
-			}
 			entityManager.persist(app);
-		} finally {
-			if (entityManager != null) {
-				entityManager.close();
-			}
-		}
 	}
 
 	@Override

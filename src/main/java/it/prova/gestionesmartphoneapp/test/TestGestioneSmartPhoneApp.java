@@ -1,6 +1,6 @@
 package it.prova.gestionesmartphoneapp.test;
 
-import java.util.List;
+import java.time.LocalDate;
 
 import it.prova.gestionesmartphoneapp.model.App;
 import it.prova.gestionesmartphoneapp.service.AppService;
@@ -67,6 +67,19 @@ public class TestGestioneSmartPhoneApp {
 //			e.printStackTrace();
 //		}
 //	}
+					
+					
+					
+					System.out.println("--------------Test insert element app metod-----------------");
+					
+					try {
+						 App app = new App(null, "lukino", LocalDate.of(2002, 11, 17), LocalDate.of(2074, 8, 12), "0.0.0");
+						appServiceInstance.insert(app);
+		
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				
 
 
 	

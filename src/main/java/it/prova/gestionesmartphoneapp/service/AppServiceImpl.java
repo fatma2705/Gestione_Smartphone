@@ -73,6 +73,7 @@ public class AppServiceImpl implements AppService {
 				System.exit(0);
 			}
 			entityManager.getTransaction().begin();
+			appDaoInstance.setEntityManager(entityManager);
 
 			appDaoInstance.insert(appInstance);
 			System.out.println("App inserita con successo");
