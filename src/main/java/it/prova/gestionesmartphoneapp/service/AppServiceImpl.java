@@ -150,4 +150,26 @@ public class AppServiceImpl implements AppService {
 			}
 		}
 	}
+
+	@Override
+	public void getByNome(String nome) throws Exception {
+		entityManager = EntityManagerUtil.getEntityManager();
+		try {
+			if (nome.equals(null)) {
+				System.out.println("Non è stato inserito il nome dell'app da cercare");
+				System.exit(0);
+			}
+			entityManager.getTransaction().begin();
+			appDaoInstance.setEntityManager(entityManager);
+			System.out.println(appDaoInstance.getBy(nome));
+			entityManager.getTransaction().commit();
+			System.out.println("Query get by nome eseguita correttamente");
+		} catch (Exception e) {
+			entityManager.getTransaction().rollback();
+			e.printStackTrace();
+			throw e;
+		} finally {
+			EntityManagerUtil.closeEntityManager(entityManager);
+		}
+	}
 }

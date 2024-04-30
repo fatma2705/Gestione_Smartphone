@@ -16,6 +16,8 @@ public interface AppService {
 	public void delete(App appInstance) throws Exception;
 
 	public void update(App appInstance) throws Exception;
+	
+	public void getByNome(String nome) throws Exception;
 
 	public void setAppDAO(AppDAO appInstance) throws Exception;
 

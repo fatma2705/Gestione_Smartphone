@@ -81,15 +81,25 @@ public class TestGestioneSmartPhoneApp {
 //					}
 //				
 					
-					System.out.println("--------------Test delete element app metod-----------------");
-					
-					try {
-						 App app = new App(6L);
-						appServiceInstance.delete(app);
+//					System.out.println("--------------Test delete element app metod-----------------");
+//					
+//					try {
+//						 App app = new App(6L);
+//						appServiceInstance.delete(app);
+//		
+//					} catch (Exception e) {
+//						e.printStackTrace();
+//					}
+
 		
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
+		System.out.println("--------------Test get by nome app metod-----------------");
+		
+		try {
+			appServiceInstance.getByNome("lukino");;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 
 	

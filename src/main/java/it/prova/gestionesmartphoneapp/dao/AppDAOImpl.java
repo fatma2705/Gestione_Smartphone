@@ -59,10 +59,11 @@ public class AppDAOImpl implements AppDAO {
 
 	@Override
 	public App getBy(String stringa) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		TypedQuery<App> query = entityManager
+				.createQuery("SELECT a FROM App a LEFT JOIN FETCH a.smartPhones WHERE a.nome = :nome", App.class);
+		query.setParameter("nome", stringa);
+		return query.getSingleResult();
 	}
-
 	@Override
 	public void deleteAppSmartPhoneAssociazione(App o) throws Exception {
 		// TODO Auto-generated method stub
