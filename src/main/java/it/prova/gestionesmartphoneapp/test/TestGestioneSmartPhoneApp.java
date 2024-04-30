@@ -203,17 +203,28 @@ public class TestGestioneSmartPhoneApp {
 		
 		
 		
-		System.out.println("--------------Test rimuovi smartphone all'app aggiornamento app metod-----------------");
-//		
-		try {
-			
-			App app = new App(10L);
-			SmartPhone smartphone = new SmartPhone(10L);
-			smartPhoneServiceInstance.rimuoviApp(smartphone, app);
-			
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//		System.out.println("--------------Test rimuovi smartphone all'app aggiornamento app metod-----------------");
+////		
+//		try {
+//			
+//			App app = new App(10L);
+//			SmartPhone smartphone = new SmartPhone(10L);
+//			smartPhoneServiceInstance.rimuoviApp(smartphone, app);
+//			
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+		
+		
+		System.out.println("--------------Test caricaSingoloSmartphoneEagerFetchinAppConAppAssociate smartphone metod-----------------");
+	
+					try {
+						SmartPhone res = smartPhoneServiceInstance.caricaSingoloSmartphoneEagerFetchinAppConAppAssociate(9L);
+						System.out.println(res.toString());
+		
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 	}
 }

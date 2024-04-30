@@ -111,8 +111,7 @@ public class App {
 	@Override
 	public String toString() {
 		return "App [id=" + id + ", nome=" + nome + ", dataInstallazione=" + dataInstallazione
-				+ ", dataUltimoAggiornamento=" + dataUltimoAggiornamento + ", versione=" + versione + ", smartPhones="
-				+ smartPhones + "]";
+				+ ", dataUltimoAggiornamento=" + dataUltimoAggiornamento + ", versione=" + versione + "]";
 	}
 
 	

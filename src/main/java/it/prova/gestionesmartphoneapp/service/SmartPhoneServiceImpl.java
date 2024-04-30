@@ -217,4 +217,25 @@ public class SmartPhoneServiceImpl implements SmartPhoneService {
 			EntityManagerUtil.closeEntityManager(entityManager);
 		}
 	}
+
+	@Override
+	public SmartPhone caricaSingoloSmartphoneEagerFetchinAppConAppAssociate(Long id) throws Exception {
+		entityManager = EntityManagerUtil.getEntityManager();
+		try {
+			if (id == null) {
+				System.out.println(" id smartphone non inserito correttamente");
+			}
+			entityManager.getTransaction().begin();
+			smartPhoneDaoInstance.setEntityManager(entityManager);
+			SmartPhone smartphone = smartPhoneDaoInstance.caricaSingoloSmartphoneEagerFetchinAppConAppAssociate(id);
+			entityManager.getTransaction().commit();
+			return smartphone;
+			} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			EntityManagerUtil.closeEntityManager(entityManager);
+		}
+	}
+
 }

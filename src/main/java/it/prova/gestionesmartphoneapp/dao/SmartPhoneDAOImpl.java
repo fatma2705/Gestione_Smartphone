@@ -80,6 +80,16 @@ public class SmartPhoneDAOImpl implements SmartPhoneDAO {
 		query.setParameter("idSmartphone", smartPhone.getId());
 		query.executeUpdate();
 	}
+
+	@Override
+	public SmartPhone caricaSingoloSmartphoneEagerFetchinAppConAppAssociate(Long id) throws Exception {
+		String jpql = "SELECT DISTINCT s FROM SmartPhone s  JOIN FETCH s.apps WHERE s.id = :id";
+	    TypedQuery<SmartPhone> query = entityManager.createQuery(jpql, SmartPhone.class);
+	    query.setParameter("id", id);
+	    SmartPhone smartphone = query.getSingleResult();
+	    return smartphone;
+		}
+
 	
 
 }

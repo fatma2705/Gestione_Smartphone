@@ -10,4 +10,6 @@ public interface SmartPhoneDAO extends IBaseDAO<SmartPhone> {
 	public void aggiungiApp(SmartPhone smartPhone, App app) throws Exception;
 	
 	public void rimuoviApp(SmartPhone smartPhone, App app) throws Exception;
+	
+	public SmartPhone caricaSingoloSmartphoneEagerFetchinAppConAppAssociate(Long id) throws Exception;
 }

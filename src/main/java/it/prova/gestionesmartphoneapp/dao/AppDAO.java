@@ -10,5 +10,7 @@ public interface AppDAO extends IBaseDAO<App> {
 	public void updateVersioneAppEDataAggiornamento(App app) throws Exception;
 
 	public void aggiungiSmartphone(SmartPhone smartPhone, App app) throws Exception;
+	
+
 
 }
