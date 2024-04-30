@@ -9,22 +9,20 @@ import jakarta.persistence.TypedQuery;
 public class SmartPhoneDAOImpl implements SmartPhoneDAO {
 	
 	EntityManager entityManager;
-
+	
 	@Override
-	public List<SmartPhone> getAll() throws Exception {
-		try {
-			entityManager = EntityManagerUtil.getEntityManager();
-			return entityManager.createQuery("SELECT DISTINCT s FROM SmartPhone s LEFT JOIN FETCH s.apps ", SmartPhone.class).getResultList();
-		} finally {
-			if (entityManager != null) {
-				entityManager.close();
-			}
-		}
+	public void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
+
 	}
 
 	@Override
+	public List<SmartPhone> getAll() throws Exception {
+			return entityManager.createQuery("SELECT DISTINCT s FROM SmartPhone s LEFT JOIN FETCH s.apps ", SmartPhone.class).getResultList();
+			}
+
+	@Override
 	public SmartPhone getElement(Long id) throws Exception {
-		entityManager = EntityManagerUtil.getEntityManager();
 		TypedQuery<SmartPhone> query = entityManager
 				.createQuery("SELECT s FROM SmartPhone s LEFT JOIN FETCH s.apps WHERE s.id = :id", SmartPhone.class);
 		query.setParameter("id", id);
@@ -67,10 +65,6 @@ public class SmartPhoneDAOImpl implements SmartPhoneDAO {
 
 	}
 
-	@Override
-	public void setEntityManager(EntityManager entityManager) {
-		// TODO Auto-generated method stub
-
-	}
+	
 
 }

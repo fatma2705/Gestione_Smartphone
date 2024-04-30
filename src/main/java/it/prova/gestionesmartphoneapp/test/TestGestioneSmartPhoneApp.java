@@ -1,5 +1,7 @@
 package it.prova.gestionesmartphoneapp.test;
 
+import java.util.List;
+
 import it.prova.gestionesmartphoneapp.model.App;
 import it.prova.gestionesmartphoneapp.model.SmartPhone;
 import it.prova.gestionesmartphoneapp.service.AppService;
@@ -27,20 +29,6 @@ public class TestGestioneSmartPhoneApp {
 //        }
 //    }
 
-//		{
-//			System.out.println("--------------Test get all smartphone metod-----------------");
-//
-//			try {
-//				List<SmartPhone> smartPhones = smartPhoneServiceInstance.getAll();
-//				for (SmartPhone smartPhone : smartPhones) {
-//					System.out.println(smartPhone.toString());
-//				}
-//
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//		}
-		
 		
 //		
 //		System.out.println("--------------Test get element app metod-----------------");
@@ -80,17 +68,17 @@ public class TestGestioneSmartPhoneApp {
 //					}
 //				
 					
-					System.out.println("--------------Test delete element app metod-----------------");
-					
-					try {
-						 App app = new App(20L);
-						appServiceInstance.delete(app);
-		
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-
-		
+//					System.out.println("--------------Test delete element app metod-----------------");
+//					
+//					try {
+//						 App app = new App(20L);
+//						appServiceInstance.delete(app);
+//		
+//					} catch (Exception e) {
+//						e.printStackTrace();
+//					}
+//
+//		
 //		System.out.println("--------------Test get by nome app metod-----------------");
 //		
 //		try {
@@ -127,6 +115,32 @@ public class TestGestioneSmartPhoneApp {
 //			e.printStackTrace();
 //		}
 
+		
+//		{
+//			System.out.println("--------------Test get all smartphone metod-----------------");
+//
+//			try {
+//				List<SmartPhone> smartPhones = smartPhoneServiceInstance.getAll();
+//				for (SmartPhone smartPhone : smartPhones) {
+//					System.out.println(smartPhone.toString());
+//				}
+//
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//		}
+//		
+//		
+		System.out.println("--------------Test get element smartphone metod-----------------");
+		
+					try {
+						System.out.println(smartPhoneServiceInstance.getElemento(5L));
+		
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				
+	
 
 	
 	
