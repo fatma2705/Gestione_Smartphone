@@ -148,15 +148,29 @@ public class TestGestioneSmartPhoneApp {
 //		}
 //	}
 //			
-		System.out.println("--------------Test insert element app metod-----------------");
+//		System.out.println("--------------Test insert element app metod-----------------");
+////		
+//		try {
+//			SmartPhone smartphone = new SmartPhone(null, "Samsung", "Galaxy S21", 999.99f, "Android 12");
+//			smartPhoneServiceInstance.insert(smartphone);
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+		
+		
+		
+		
+		System.out.println("--------------Test delete element app metod-----------------");
 //		
 		try {
-			SmartPhone smartphone = new SmartPhone(null, "Samsung", "Galaxy S21", 999.99f, "Android 12");
-			smartPhoneServiceInstance.insert(smartphone);
+			 SmartPhone smartphone = new SmartPhone(6L);
+			smartPhoneServiceInstance.delete(smartphone);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+//
 
 	}
 }

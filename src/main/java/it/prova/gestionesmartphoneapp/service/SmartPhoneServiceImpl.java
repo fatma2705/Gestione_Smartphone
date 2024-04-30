@@ -97,8 +97,30 @@ public class SmartPhoneServiceImpl implements SmartPhoneService {
 
 	@Override
 	public void delete(SmartPhone smartPhoneInstance) throws Exception {
-		// TODO Auto-generated method stub
+		entityManager = EntityManagerUtil.getEntityManager();
+		try {
+			// controllo se sono stati inseriti i dati nella variabile smartPhoneInstance
+			if (smartPhoneInstance.getId() == null) {
+				System.out.println("ERRORE: id smartphone non inserito");
+				System.exit(0);
+			}
+			entityManager.getTransaction().begin();
 
+			smartPhoneDaoInstance.setEntityManager(entityManager);
+			// delete della associazione tra app e smartphone
+			smartPhoneDaoInstance.deleteAppSmartPhoneAssociazione(smartPhoneInstance);
+			System.out.println("Associazione tra app e smartphone rimossa");
+			// infine delete dell' app
+			smartPhoneDaoInstance.delete(smartPhoneInstance);
+			entityManager.getTransaction().commit();
+			System.out.println("Smartphone rimosso dal DB");
+		} catch (Exception e) {
+			entityManager.getTransaction().rollback();
+			e.printStackTrace();
+			throw e;
+		} finally {
+			EntityManagerUtil.closeEntityManager(entityManager);
+		}
 	}
 
 	@Override

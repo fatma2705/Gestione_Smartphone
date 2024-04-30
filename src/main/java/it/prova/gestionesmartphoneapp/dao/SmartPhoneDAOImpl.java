@@ -4,6 +4,7 @@ import java.util.List;
 
 import it.prova.gestionesmartphoneapp.model.SmartPhone;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 
 public class SmartPhoneDAOImpl implements SmartPhoneDAO {
@@ -40,15 +41,9 @@ public class SmartPhoneDAOImpl implements SmartPhoneDAO {
 	}
 
 	@Override
-	public void delete(SmartPhone o) throws Exception {
-		// TODO Auto-generated method stub
+	public void delete(SmartPhone smartphone) throws Exception {
+		entityManager.remove(entityManager.merge(smartphone));
 
-	}
-
-	@Override
-	public boolean exist(SmartPhone o) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 	@Override
@@ -58,8 +53,10 @@ public class SmartPhoneDAOImpl implements SmartPhoneDAO {
 	}
 
 	@Override
-	public void deleteAppSmartPhoneAssociazione(SmartPhone o) throws Exception {
-		// TODO Auto-generated method stub
+	public void deleteAppSmartPhoneAssociazione(SmartPhone smartphone) throws Exception {
+		Query query = entityManager.createNativeQuery("DELETE FROM smartphone_app WHERE id_smartphone = :idSmartphone ");
+		query.setParameter("idSmartphone", smartphone.getId());
+		query.executeUpdate();
 
 	}
 

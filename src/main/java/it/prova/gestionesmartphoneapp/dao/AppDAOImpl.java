@@ -56,12 +56,6 @@ public class AppDAOImpl implements AppDAO {
 	}
 
 	@Override
-	public boolean exist(App o) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public App getBy(String stringa) throws Exception {
 		TypedQuery<App> query = entityManager
 				.createQuery("SELECT a FROM App a LEFT JOIN FETCH a.smartPhones WHERE a.nome = :nome", App.class);

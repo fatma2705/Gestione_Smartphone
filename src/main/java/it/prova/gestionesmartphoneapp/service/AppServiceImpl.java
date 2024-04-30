@@ -95,7 +95,7 @@ public class AppServiceImpl implements AppService {
 	public void delete(App appInstance) throws Exception {
 		entityManager = EntityManagerUtil.getEntityManager();
 		try {
-			// controllo se sono stati inseriti i dati nella variabile genereInstance
+			// controllo se sono stati inseriti i dati nella variabile appInstance
 			if (appInstance.getId() == null) {
 				System.out.println("ERRORE: id app non inserito");
 				System.exit(0);

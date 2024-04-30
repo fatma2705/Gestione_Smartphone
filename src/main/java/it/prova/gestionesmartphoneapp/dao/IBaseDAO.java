@@ -16,7 +16,6 @@ public interface IBaseDAO<T> {
 
 	public void delete(T o) throws Exception;
 
-	public boolean exist(T o) throws Exception;
 	
 	public T getBy(String stringa)throws Exception;
 	
