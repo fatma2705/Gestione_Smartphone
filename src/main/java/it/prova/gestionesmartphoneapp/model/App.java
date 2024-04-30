@@ -46,6 +46,10 @@ public class App {
 		this.versione = versione;
 	}
 
+	public App(long id) {
+		this.id = id;
+	}
+
 	public Long getId() {
 		return id;
 	}

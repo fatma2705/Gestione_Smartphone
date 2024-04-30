@@ -44,15 +44,15 @@ public class TestGestioneSmartPhoneApp {
 		
 		
 //		
-		System.out.println("--------------Test get element app metod-----------------");
-		
-					try {
-						System.out.println(appServiceInstance.getElemento(5L));
-		
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				
+//		System.out.println("--------------Test get element app metod-----------------");
+//		
+//					try {
+//						System.out.println(appServiceInstance.getElemento(5L));
+//		
+//					} catch (Exception e) {
+//						e.printStackTrace();
+//					}
+//				
 ////	
 //	
 		
@@ -69,17 +69,27 @@ public class TestGestioneSmartPhoneApp {
 //	}
 					
 					
+//					
+//					System.out.println("--------------Test insert element app metod-----------------");
+//					
+//					try {
+//						 App app = new App(null, "lukino", LocalDate.of(2002, 11, 17), LocalDate.of(2074, 8, 12), "0.0.0");
+//						appServiceInstance.insert(app);
+//		
+//					} catch (Exception e) {
+//						e.printStackTrace();
+//					}
+//				
 					
-					System.out.println("--------------Test insert element app metod-----------------");
+					System.out.println("--------------Test delete element app metod-----------------");
 					
 					try {
-						 App app = new App(null, "lukino", LocalDate.of(2002, 11, 17), LocalDate.of(2074, 8, 12), "0.0.0");
-						appServiceInstance.insert(app);
+						 App app = new App(6L);
+						appServiceInstance.delete(app);
 		
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
-				
 
 
 	

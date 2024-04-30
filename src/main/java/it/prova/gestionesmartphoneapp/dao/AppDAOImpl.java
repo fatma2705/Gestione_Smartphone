@@ -48,17 +48,7 @@ public class AppDAOImpl implements AppDAO {
 
 	@Override
 	public void delete(App app) throws Exception {
-		try {
-			entityManager = EntityManagerUtil.getEntityManager();
-			if (app == null) {
-				throw new Exception("Impossibile eseguire la delete nel DB. Input non valido");
-			}
 			entityManager.remove(entityManager.merge(app));
-		} finally {
-			if (entityManager != null) {
-				entityManager.close();
-			}
-		}
 	}
 
 	@Override

@@ -93,7 +93,7 @@ public class AppServiceImpl implements AppService {
 		entityManager = EntityManagerUtil.getEntityManager();
 		try {
 			// controllo se sono stati inseriti i dati nella variabile genereInstance
-			if (appInstance == null) {
+			if (appInstance.getId() == null) {
 				System.out.println("ERRORE: id app non inserito");
 				System.exit(0);
 			}
