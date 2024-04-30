@@ -1,8 +1,7 @@
 package it.prova.gestionesmartphoneapp.test;
 
-import java.time.LocalDate;
-
 import it.prova.gestionesmartphoneapp.model.App;
+import it.prova.gestionesmartphoneapp.model.SmartPhone;
 import it.prova.gestionesmartphoneapp.service.AppService;
 import it.prova.gestionesmartphoneapp.service.MyServiceFactory;
 import it.prova.gestionesmartphoneapp.service.SmartPhoneService;
@@ -81,15 +80,15 @@ public class TestGestioneSmartPhoneApp {
 //					}
 //				
 					
-//					System.out.println("--------------Test delete element app metod-----------------");
-//					
-//					try {
-//						 App app = new App(6L);
-//						appServiceInstance.delete(app);
-//		
-//					} catch (Exception e) {
-//						e.printStackTrace();
-//					}
+					System.out.println("--------------Test delete element app metod-----------------");
+					
+					try {
+						 App app = new App(20L);
+						appServiceInstance.delete(app);
+		
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 
 		
 //		System.out.println("--------------Test get by nome app metod-----------------");
@@ -102,17 +101,31 @@ public class TestGestioneSmartPhoneApp {
 //		}
 		
 		
-		System.out.println("--------------Test update versione e data aggiornamento app metod-----------------");
+//		System.out.println("--------------Test update versione e data aggiornamento app metod-----------------");
+//		
+//		try {
+//			
+//			App app = new App(10L,LocalDate.of(2003, 05, 27),"3.363.9");
+//			appServiceInstance.updateVersioneAppEDataAggiornamento(app);;
+//			
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		
-		try {
-			
-			App app = new App(10L,LocalDate.of(2003, 05, 27),"3.363.9");
-			appServiceInstance.updateVersioneAppEDataAggiornamento(app);;
-			
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
+//		System.out.println("--------------Test insert smartphone all'app aggiornamento app metod-----------------");
+//		
+//		try {
+//			
+//			App app = new App(10L);
+//			SmartPhone smartphone = new SmartPhone(8L);
+//			appServiceInstance.aggiungiSmartphone(smartphone, app);
+//			
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 
 
 	

@@ -4,6 +4,7 @@ import java.util.List;
 
 import it.prova.gestionesmartphoneapp.model.SmartPhone;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 
 public class SmartPhoneDAOImpl implements SmartPhoneDAO {
 	
@@ -23,10 +24,13 @@ public class SmartPhoneDAOImpl implements SmartPhoneDAO {
 
 	@Override
 	public SmartPhone getElement(Long id) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+		entityManager = EntityManagerUtil.getEntityManager();
+		TypedQuery<SmartPhone> query = entityManager
+				.createQuery("SELECT s FROM SmartPhone s LEFT JOIN FETCH s.apps WHERE s.id = :id", SmartPhone.class);
+		query.setParameter("id", id);
+		return query.getSingleResult();
+		}
+	
 	@Override
 	public void update(SmartPhone o) throws Exception {
 		// TODO Auto-generated method stub

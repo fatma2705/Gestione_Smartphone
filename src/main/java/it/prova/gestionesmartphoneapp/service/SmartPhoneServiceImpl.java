@@ -48,9 +48,23 @@ public class SmartPhoneServiceImpl implements SmartPhoneService {
 
 	@Override
 	public SmartPhone getElemento(Long id) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+//		entityManager = EntityManagerUtil.getEntityManager();
+//		try {
+//			if (id == null) {
+//				System.out.println(" id smartphone non inserito correttamente");
+//			}
+//			entityManager.getTransaction().begin();
+//			smartPhoneDaoInstance.setEntityManager(entityManager);
+//			return smartPhoneDaoInstance.getElement(id);
+//			entityManager.getTransaction().commit();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			throw e;
+//		} finally {
+//			EntityManagerUtil.closeEntityManager(entityManager);
+//		}
 	}
+
 
 	@Override
 	public void insert(SmartPhone smartPhoneInstance) throws Exception {
