@@ -7,6 +7,12 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
 public class AppDAOImpl implements AppDAO {
+	
+	// entity manager non deve essere inizializzato nello strato DAO ma nel strato dei service 
+	// dentro al DAO le funzioni devo essere più secche entityManager.function() 
+	// eccezioni e gestione di entity manager tutto nel strato service 
+	// non ti scordare di settare l'entity manager nella function del service prima di 
+	// chiamare la function del DAO
 
 	EntityManager entityManager;
 
@@ -18,50 +24,26 @@ public class AppDAOImpl implements AppDAO {
 
 	@Override
 	public List<App> getAll() throws Exception {
-		try {
-			entityManager = EntityManagerUtil.getEntityManager();
-			return entityManager.createQuery("SELECT DISTINCT a FROM App a LEFT JOIN FETCH a.smartPhones ", App.class)
-					.getResultList();
-		} finally {
-			if (entityManager != null) {
-				entityManager.close();
-			}
-		}
+
+		return entityManager.createQuery("SELECT DISTINCT a FROM App a LEFT JOIN FETCH a.smartPhones ", App.class)
+				.getResultList();
 	}
 
 	@Override
 	public App getElement(Long id) throws Exception {
-		try {
-			entityManager = EntityManagerUtil.getEntityManager();
-			TypedQuery<App> query = entityManager
-					.createQuery("SELECT a FROM App a LEFT JOIN FETCH a.smartPhones WHERE a.id = :id", App.class);
-			query.setParameter("id", id);
-			return query.getSingleResult();
-		} finally {
-			if (entityManager != null) {
-				entityManager.close();
-			}
-		}
+		TypedQuery<App> query = entityManager
+				.createQuery("SELECT a FROM App a LEFT JOIN FETCH a.smartPhones WHERE a.id = :id", App.class);
+		query.setParameter("id", id);
+		return query.getSingleResult();
 	}
 
 	@Override
 	public void update(App app) throws Exception {
-	    entityManager = EntityManagerUtil.getEntityManager();
-	    try {
-	        if (entityManager == null) {
-	            throw new IllegalStateException("EntityManager is null. Ensure it is set before calling update.");
-	        }
-	        //entityManager.joinTransaction();
-	        entityManager.merge(app);
-	        //entityManager.flush();
-	    } catch (Throwable e) {
-	        e.printStackTrace();
-	        throw e;
-	    }
+		
+		entityManager.merge(app);
+
 	}
 
-
-	
 	@Override
 	public void insert(App app) throws Exception {
 		try {

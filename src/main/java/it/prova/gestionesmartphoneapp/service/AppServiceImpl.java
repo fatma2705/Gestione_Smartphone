@@ -123,29 +123,30 @@ public class AppServiceImpl implements AppService {
 
 	@Override
 	public void update(App appInstance) throws Exception {
-	    EntityTransaction transaction = null;
-	    try {
-	        entityManager = EntityManagerUtil.getEntityManager();
-	        transaction = entityManager.getTransaction();
-	        transaction.begin();
+		EntityTransaction transaction = null;
+		try {
+			entityManager = EntityManagerUtil.getEntityManager();
+			appDaoInstance.setEntityManager(entityManager);
+			transaction = entityManager.getTransaction();
+			transaction.begin();
 
-	        if (appInstance == null) {
-	            System.out.println("ERRORE: dati app non inseriti");
-	            return;
-	        }
-	        appDaoInstance.update(appInstance);
+			if (appInstance == null) {
+				System.out.println("ERRORE: dati app non inseriti");
+				return;
+			}
+			appDaoInstance.update(appInstance);
 
-	        transaction.commit();
-	        System.out.println("App updated successfully.");
-	    } catch (Exception e) {
-	        if (transaction != null && transaction.isActive()) {
-	            transaction.rollback();
-	        }
-	        throw e;
-	    } finally {
-	        if (entityManager != null && entityManager.isOpen()) {
-	            entityManager.close();
-	        }
-	    }
+			transaction.commit();
+			System.out.println("App updated successfully.");
+		} catch (Exception e) {
+			if (transaction != null && transaction.isActive()) {
+				transaction.rollback();
+			}
+			throw e;
+		} finally {
+			if (entityManager != null && entityManager.isOpen()) {
+				entityManager.close();
+			}
+		}
 	}
 }
