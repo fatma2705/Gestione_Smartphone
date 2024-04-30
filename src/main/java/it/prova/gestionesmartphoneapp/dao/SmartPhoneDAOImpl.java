@@ -35,9 +35,8 @@ public class SmartPhoneDAOImpl implements SmartPhoneDAO {
 	}
 
 	@Override
-	public void insert(SmartPhone o) throws Exception {
-		// TODO Auto-generated method stub
-
+	public void insert(SmartPhone smartphone) throws Exception {
+		entityManager.persist(smartphone);
 	}
 
 	@Override

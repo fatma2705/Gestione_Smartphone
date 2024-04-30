@@ -29,7 +29,6 @@ public class TestGestioneSmartPhoneApp {
 //        }
 //    }
 
-		
 //		
 //		System.out.println("--------------Test get element app metod-----------------");
 //		
@@ -42,8 +41,7 @@ public class TestGestioneSmartPhoneApp {
 //				
 ////	
 //	
-		
-		
+
 //		System.out.println("--------------Test update element app metod-----------------");
 //		
 //		try {
@@ -54,8 +52,7 @@ public class TestGestioneSmartPhoneApp {
 //			e.printStackTrace();
 //		}
 //	}
-					
-					
+
 //					
 //					System.out.println("--------------Test insert element app metod-----------------");
 //					
@@ -67,7 +64,7 @@ public class TestGestioneSmartPhoneApp {
 //						e.printStackTrace();
 //					}
 //				
-					
+
 //					System.out.println("--------------Test delete element app metod-----------------");
 //					
 //					try {
@@ -87,8 +84,7 @@ public class TestGestioneSmartPhoneApp {
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}
-		
-		
+
 //		System.out.println("--------------Test update versione e data aggiornamento app metod-----------------");
 //		
 //		try {
@@ -100,8 +96,7 @@ public class TestGestioneSmartPhoneApp {
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}
-		
-		
+
 //		System.out.println("--------------Test insert smartphone all'app aggiornamento app metod-----------------");
 //		
 //		try {
@@ -115,7 +110,6 @@ public class TestGestioneSmartPhoneApp {
 //			e.printStackTrace();
 //		}
 
-		
 //		{
 //			System.out.println("--------------Test get all smartphone metod-----------------");
 //
@@ -142,25 +136,27 @@ public class TestGestioneSmartPhoneApp {
 //				
 //	
 
-		System.out.println("--------------Test update element app metod-----------------");
-	
+//		System.out.println("--------------Test update element app metod-----------------");
+//	
+//		try {
+//			SmartPhone smartphone = new SmartPhone(1L, "Samsung", "Galaxy S21", 999.99f, "Android 12");
+//
+//			smartPhoneServiceInstance.update(smartphone);
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
+//			
+		System.out.println("--------------Test insert element app metod-----------------");
+//		
 		try {
-			SmartPhone smartphone = new SmartPhone(1L, "Samsung", "Galaxy S21", 999.99f, "Android 12");
-
-			smartPhoneServiceInstance.update(smartphone);
+			SmartPhone smartphone = new SmartPhone(null, "Samsung", "Galaxy S21", 999.99f, "Android 12");
+			smartPhoneServiceInstance.insert(smartphone);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-			
-				
-	
-		
-		
-		
-		
 
 	}
-
-
+}

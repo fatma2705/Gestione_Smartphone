@@ -69,7 +69,29 @@ public class SmartPhoneServiceImpl implements SmartPhoneService {
 
 	@Override
 	public void insert(SmartPhone smartPhoneInstance) throws Exception {
-		// TODO Auto-generated method stub
+		entityManager = EntityManagerUtil.getEntityManager();
+		try {
+			if (smartPhoneInstance.equals(null)) {
+				System.out.println("ERRORE: dati smartphone non inseriti");
+				System.exit(0);
+			}
+			if (smartPhoneInstance.getId() != null) {
+				System.out.println("ERRORE: id non  nullo");
+				System.exit(0);
+			}
+			entityManager.getTransaction().begin();
+			smartPhoneDaoInstance.setEntityManager(entityManager);
+
+			smartPhoneDaoInstance.insert(smartPhoneInstance);
+			System.out.println("Smartphone inserito con successo");
+			entityManager.getTransaction().commit();
+		} catch (Exception e) {
+			entityManager.getTransaction().rollback();
+			e.printStackTrace();
+			throw e;
+		} finally {
+			EntityManagerUtil.closeEntityManager(entityManager);
+		}
 
 	}
 
