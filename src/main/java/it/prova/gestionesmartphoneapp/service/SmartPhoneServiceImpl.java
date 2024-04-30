@@ -7,6 +7,7 @@ import it.prova.gestionesmartphoneapp.dao.EntityManagerUtil;
 import it.prova.gestionesmartphoneapp.dao.SmartPhoneDAO;
 import it.prova.gestionesmartphoneapp.model.SmartPhone;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
 
 public class SmartPhoneServiceImpl implements SmartPhoneService {
 
@@ -80,8 +81,30 @@ public class SmartPhoneServiceImpl implements SmartPhoneService {
 
 	@Override
 	public void update(SmartPhone smartPhoneInstance) throws Exception {
-		// TODO Auto-generated method stub
+		EntityTransaction transaction = null;
+		try {
+			entityManager = EntityManagerUtil.getEntityManager();
+			smartPhoneDaoInstance.setEntityManager(entityManager);;
+			transaction = entityManager.getTransaction();
+			transaction.begin();
 
+			if (smartPhoneInstance == null) {
+				System.out.println("ERRORE: dati smartphone non inseriti");
+				return;
+			}
+			smartPhoneDaoInstance.update(smartPhoneInstance);
+
+			transaction.commit();
+			System.out.println("Smartphone updated successfully.");
+		} catch (Exception e) {
+			if (transaction != null && transaction.isActive()) {
+				transaction.rollback();
+			}
+			throw e;
+		} finally {
+			if (entityManager != null && entityManager.isOpen()) {
+				entityManager.close();
+			}
+		}
 	}
-
 }

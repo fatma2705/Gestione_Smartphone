@@ -30,9 +30,8 @@ public class SmartPhoneDAOImpl implements SmartPhoneDAO {
 		}
 	
 	@Override
-	public void update(SmartPhone o) throws Exception {
-		// TODO Auto-generated method stub
-
+	public void update(SmartPhone smartphone) throws Exception {
+		entityManager.merge(smartphone);
 	}
 
 	@Override

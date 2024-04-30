@@ -131,18 +131,30 @@ public class TestGestioneSmartPhoneApp {
 //		}
 //		
 //		
-		System.out.println("--------------Test get element smartphone metod-----------------");
-		
-					try {
-						System.out.println(smartPhoneServiceInstance.getElemento(5L));
-		
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				
-	
+//		System.out.println("--------------Test get element smartphone metod-----------------");
+//		
+//					try {
+//						System.out.println(smartPhoneServiceInstance.getElemento(5L));
+//		
+//					} catch (Exception e) {
+//						e.printStackTrace();
+//					}
+//				
+//	
 
+		System.out.println("--------------Test update element app metod-----------------");
 	
+		try {
+			SmartPhone smartphone = new SmartPhone(1L, "Samsung", "Galaxy S21", 999.99f, "Android 12");
+
+			smartPhoneServiceInstance.update(smartphone);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+			
+				
 	
 		
 		
@@ -150,5 +162,5 @@ public class TestGestioneSmartPhoneApp {
 		
 
 	}
-}
+
 
