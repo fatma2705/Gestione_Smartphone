@@ -2,9 +2,12 @@ package it.prova.gestionesmartphoneapp.service;
 
 import java.util.List;
 
+import org.hibernate.exception.ConstraintViolationException;
+
 import it.prova.gestionesmartphoneapp.dao.AppDAO;
 import it.prova.gestionesmartphoneapp.dao.EntityManagerUtil;
 import it.prova.gestionesmartphoneapp.dao.SmartPhoneDAO;
+import it.prova.gestionesmartphoneapp.model.App;
 import it.prova.gestionesmartphoneapp.model.SmartPhone;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -149,6 +152,69 @@ public class SmartPhoneServiceImpl implements SmartPhoneService {
 			if (entityManager != null && entityManager.isOpen()) {
 				entityManager.close();
 			}
+		}
+	}
+
+	@Override
+	public void updateVersioneOs(SmartPhone smartphone) throws Exception {
+		entityManager = EntityManagerUtil.getEntityManager();
+		try {
+			if (smartphone.equals(null)) {
+				System.out.println("Non sono stati inseriti i dati dello smartphone");
+				System.exit(0);
+			}
+			entityManager.getTransaction().begin();
+			smartPhoneDaoInstance.setEntityManager(entityManager);
+			smartPhoneDaoInstance.updateVersioneOs(smartphone);
+			entityManager.getTransaction().commit();
+			System.out.println("VersioneOs   aggiornata con successo");
+		} catch (Exception e) {
+			entityManager.getTransaction().rollback();
+			e.printStackTrace();
+			throw e;
+		} finally {
+			EntityManagerUtil.closeEntityManager(entityManager);
+		}
+	}
+
+	@Override
+	public void aggiungiApp(SmartPhone smartPhone, App app) throws Exception {
+		entityManager = EntityManagerUtil.getEntityManager();
+
+		try {
+			entityManager.getTransaction().begin();
+			smartPhoneDaoInstance.setEntityManager(entityManager);
+			smartPhoneDaoInstance.aggiungiApp(smartPhone, app);
+			entityManager.getTransaction().commit();
+			System.out.println("App aggiunta al smartphone correttamente");
+
+		} catch (ConstraintViolationException e) {
+			entityManager.getTransaction().rollback();
+			System.out.println("Errore durante l'esecuzione della query sql: " + e.getMessage());
+			e.printStackTrace();
+			throw e;
+		} finally {
+			EntityManagerUtil.closeEntityManager(entityManager);
+		}
+	}
+	@Override
+	public void rimuoviApp(SmartPhone smartPhone, App app) throws Exception {
+		entityManager = EntityManagerUtil.getEntityManager();
+
+		try {
+			entityManager.getTransaction().begin();
+			smartPhoneDaoInstance.setEntityManager(entityManager);
+			smartPhoneDaoInstance.rimuoviApp(smartPhone, app);
+			entityManager.getTransaction().commit();
+			System.out.println("App rimossa dal smartphone correttamente");
+
+		} catch (ConstraintViolationException e) {
+			entityManager.getTransaction().rollback();
+			System.out.println("Errore durante l'esecuzione della query sql: " + e.getMessage());
+			e.printStackTrace();
+			throw e;
+		} finally {
+			EntityManagerUtil.closeEntityManager(entityManager);
 		}
 	}
 }

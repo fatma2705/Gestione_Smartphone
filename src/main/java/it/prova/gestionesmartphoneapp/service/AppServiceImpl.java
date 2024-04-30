@@ -158,7 +158,7 @@ public class AppServiceImpl implements AppService {
 			}
 			entityManager.getTransaction().begin();
 			appDaoInstance.setEntityManager(entityManager);
-			System.out.println(appDaoInstance.getBy(nome));
+			System.out.println(appDaoInstance.getByNome(nome));
 			entityManager.getTransaction().commit();
 			System.out.println("Query get by nome eseguita correttamente");
 		} catch (Exception e) {

@@ -56,7 +56,7 @@ public class AppDAOImpl implements AppDAO {
 	}
 
 	@Override
-	public App getBy(String stringa) throws Exception {
+	public App getByNome(String stringa) throws Exception {
 		TypedQuery<App> query = entityManager
 				.createQuery("SELECT a FROM App a LEFT JOIN FETCH a.smartPhones WHERE a.nome = :nome", App.class);
 		query.setParameter("nome", stringa);

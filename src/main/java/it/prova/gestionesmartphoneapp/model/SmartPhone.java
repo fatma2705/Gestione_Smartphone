@@ -54,6 +54,11 @@ public class SmartPhone {
 				
 	}
 
+	public SmartPhone(long id, String versioneOs) {
+		this.id = id;
+		this.versioneOs = versioneOs;
+	}
+
 	public Long getId() {
 		return id;
 	}

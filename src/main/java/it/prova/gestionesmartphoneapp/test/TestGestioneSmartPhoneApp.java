@@ -128,12 +128,12 @@ public class TestGestioneSmartPhoneApp {
 //		System.out.println("--------------Test get element smartphone metod-----------------");
 //		
 //					try {
-//						System.out.println(smartPhoneServiceInstance.getElemento(5L));
+//						System.out.println(smartPhoneServiceInstance.getElemento(9L));
 //		
 //					} catch (Exception e) {
 //						e.printStackTrace();
 //					}
-//				
+////				
 //	
 
 //		System.out.println("--------------Test update element app metod-----------------");
@@ -161,16 +161,59 @@ public class TestGestioneSmartPhoneApp {
 		
 		
 		
-		System.out.println("--------------Test delete element app metod-----------------");
+//		System.out.println("--------------Test delete element app metod-----------------");
+////		
+//		try {
+//			 SmartPhone smartphone = new SmartPhone(6L);
+//			smartPhoneServiceInstance.delete(smartphone);
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+////
+		
+		
+		
+//		System.out.println("--------------Test update versioneOs  app metod-----------------");
+////		
+//		try {
+//			SmartPhone smartphone = new SmartPhone(8L,"IOS%&");
+//			smartPhoneServiceInstance.updateVersioneOs(smartphone);
+//			
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+
+		
+		
+		
+//		System.out.println("--------------Test insert smartphone all'app aggiornamento app metod-----------------");
+////		
+//		try {
+//			
+//			App app = new App(10L);
+//			SmartPhone smartphone = new SmartPhone(10L);
+//			smartPhoneServiceInstance.aggiungiApp(smartphone, app);
+//			
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+		
+		
+		
+		System.out.println("--------------Test rimuovi smartphone all'app aggiornamento app metod-----------------");
 //		
 		try {
-			 SmartPhone smartphone = new SmartPhone(6L);
-			smartPhoneServiceInstance.delete(smartphone);
+			
+			App app = new App(10L);
+			SmartPhone smartphone = new SmartPhone(10L);
+			smartPhoneServiceInstance.rimuoviApp(smartphone, app);
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-//
-
 	}
 }

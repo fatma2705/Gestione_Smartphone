@@ -2,6 +2,7 @@ package it.prova.gestionesmartphoneapp.dao;
 
 import java.util.List;
 
+import it.prova.gestionesmartphoneapp.model.App;
 import it.prova.gestionesmartphoneapp.model.SmartPhone;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
@@ -47,12 +48,6 @@ public class SmartPhoneDAOImpl implements SmartPhoneDAO {
 	}
 
 	@Override
-	public SmartPhone getBy(String stringa) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public void deleteAppSmartPhoneAssociazione(SmartPhone smartphone) throws Exception {
 		Query query = entityManager.createNativeQuery("DELETE FROM smartphone_app WHERE id_smartphone = :idSmartphone ");
 		query.setParameter("idSmartphone", smartphone.getId());
@@ -60,6 +55,31 @@ public class SmartPhoneDAOImpl implements SmartPhoneDAO {
 
 	}
 
+	@Override
+	public void updateVersioneOs(SmartPhone smartphone) throws Exception {
+		SmartPhone existingSmartphone = this.getElement(smartphone.getId());
+		existingSmartphone.setVersioneOs(smartphone.getVersioneOs());;
+		entityManager.merge(existingSmartphone);
+	}
+
+	@Override
+	public void aggiungiApp(SmartPhone smartPhone, App app) throws Exception {
+		Query query = entityManager
+				.createNativeQuery("INSERT INTO smartphone_app (id_app,id_smartphone) VALUES (:idApp,:idSmartphone)");
+		query.setParameter("idApp", app.getId());
+		query.setParameter("idSmartphone", smartPhone.getId());
+		query.executeUpdate();
+		
+	}
+
+	@Override
+	public void rimuoviApp(SmartPhone smartPhone, App app) throws Exception {
+		Query query = entityManager
+				.createNativeQuery("DELETE FROM  smartphone_app  WHERE id_app = :idApp AND id_smartphone = :idSmartphone ");
+		query.setParameter("idApp", app.getId());
+		query.setParameter("idSmartphone", smartPhone.getId());
+		query.executeUpdate();
+	}
 	
 
 }

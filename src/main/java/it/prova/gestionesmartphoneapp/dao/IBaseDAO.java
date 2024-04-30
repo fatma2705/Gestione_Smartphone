@@ -15,9 +15,6 @@ public interface IBaseDAO<T> {
 	public void insert(T o) throws Exception;
 
 	public void delete(T o) throws Exception;
-
-	
-	public T getBy(String stringa)throws Exception;
 	
 	public void deleteAppSmartPhoneAssociazione(T o) throws Exception;
 
