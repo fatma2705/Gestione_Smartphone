@@ -28,7 +28,7 @@ public class App {
 	private LocalDate dataInstallazione;
 	@Column(name = "data_ultimo_aggiornamento")
 	private LocalDate dataUltimoAggiornamento;
-	@Column(name="versione")
+	@Column(name = "versione")
 	private String versione;
 
 	@ManyToMany(mappedBy = "apps", fetch = FetchType.LAZY)
@@ -38,7 +38,7 @@ public class App {
 
 	}
 
-	public App(Long id, String nome, LocalDate dataInstallazione, LocalDate dataUltimoAggiornamento,String versione) {
+	public App(Long id, String nome, LocalDate dataInstallazione, LocalDate dataUltimoAggiornamento, String versione) {
 		this.id = id;
 		this.nome = nome;
 		this.dataInstallazione = dataInstallazione;
@@ -54,7 +54,7 @@ public class App {
 		this.id = id;
 		this.dataUltimoAggiornamento = dataUltimoAggiornamento;
 		this.versione = versione;
-		
+
 	}
 
 	public Long getId() {
@@ -96,9 +96,6 @@ public class App {
 	public void setSmartPhones(Set<SmartPhone> smartPhones) {
 		this.smartPhones = smartPhones;
 	}
-	
-	
-	
 
 	public String getVersione() {
 		return versione;
@@ -114,5 +111,4 @@ public class App {
 				+ ", dataUltimoAggiornamento=" + dataUltimoAggiornamento + ", versione=" + versione + "]";
 	}
 
-	
 }

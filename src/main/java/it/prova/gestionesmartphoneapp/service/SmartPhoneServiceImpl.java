@@ -61,14 +61,13 @@ public class SmartPhoneServiceImpl implements SmartPhoneService {
 			smartPhoneDaoInstance.setEntityManager(entityManager);
 			entityManager.getTransaction().commit();
 			return smartPhoneDaoInstance.getElement(id);
-			} catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
 		} finally {
 			EntityManagerUtil.closeEntityManager(entityManager);
 		}
 	}
-
 
 	@Override
 	public void insert(SmartPhone smartPhoneInstance) throws Exception {
@@ -131,7 +130,8 @@ public class SmartPhoneServiceImpl implements SmartPhoneService {
 		EntityTransaction transaction = null;
 		try {
 			entityManager = EntityManagerUtil.getEntityManager();
-			smartPhoneDaoInstance.setEntityManager(entityManager);;
+			smartPhoneDaoInstance.setEntityManager(entityManager);
+			;
 			transaction = entityManager.getTransaction();
 			transaction.begin();
 
@@ -197,6 +197,7 @@ public class SmartPhoneServiceImpl implements SmartPhoneService {
 			EntityManagerUtil.closeEntityManager(entityManager);
 		}
 	}
+
 	@Override
 	public void rimuoviApp(SmartPhone smartPhone, App app) throws Exception {
 		entityManager = EntityManagerUtil.getEntityManager();
@@ -230,7 +231,7 @@ public class SmartPhoneServiceImpl implements SmartPhoneService {
 			SmartPhone smartphone = smartPhoneDaoInstance.caricaSingoloSmartphoneEagerFetchinAppConAppAssociate(id);
 			entityManager.getTransaction().commit();
 			return smartphone;
-			} catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			throw e;
 		} finally {

@@ -9,9 +9,9 @@ import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 
 public class SmartPhoneDAOImpl implements SmartPhoneDAO {
-	
+
 	EntityManager entityManager;
-	
+
 	@Override
 	public void setEntityManager(EntityManager entityManager) {
 		this.entityManager = entityManager;
@@ -20,8 +20,10 @@ public class SmartPhoneDAOImpl implements SmartPhoneDAO {
 
 	@Override
 	public List<SmartPhone> getAll() throws Exception {
-			return entityManager.createQuery("SELECT DISTINCT s FROM SmartPhone s LEFT JOIN FETCH s.apps ", SmartPhone.class).getResultList();
-			}
+		return entityManager
+				.createQuery("SELECT DISTINCT s FROM SmartPhone s LEFT JOIN FETCH s.apps ", SmartPhone.class)
+				.getResultList();
+	}
 
 	@Override
 	public SmartPhone getElement(Long id) throws Exception {
@@ -29,8 +31,8 @@ public class SmartPhoneDAOImpl implements SmartPhoneDAO {
 				.createQuery("SELECT s FROM SmartPhone s LEFT JOIN FETCH s.apps WHERE s.id = :id", SmartPhone.class);
 		query.setParameter("id", id);
 		return query.getSingleResult();
-		}
-	
+	}
+
 	@Override
 	public void update(SmartPhone smartphone) throws Exception {
 		entityManager.merge(smartphone);
@@ -49,7 +51,8 @@ public class SmartPhoneDAOImpl implements SmartPhoneDAO {
 
 	@Override
 	public void deleteAppSmartPhoneAssociazione(SmartPhone smartphone) throws Exception {
-		Query query = entityManager.createNativeQuery("DELETE FROM smartphone_app WHERE id_smartphone = :idSmartphone ");
+		Query query = entityManager
+				.createNativeQuery("DELETE FROM smartphone_app WHERE id_smartphone = :idSmartphone ");
 		query.setParameter("idSmartphone", smartphone.getId());
 		query.executeUpdate();
 
@@ -58,7 +61,8 @@ public class SmartPhoneDAOImpl implements SmartPhoneDAO {
 	@Override
 	public void updateVersioneOs(SmartPhone smartphone) throws Exception {
 		SmartPhone existingSmartphone = this.getElement(smartphone.getId());
-		existingSmartphone.setVersioneOs(smartphone.getVersioneOs());;
+		existingSmartphone.setVersioneOs(smartphone.getVersioneOs());
+		;
 		entityManager.merge(existingSmartphone);
 	}
 
@@ -69,13 +73,13 @@ public class SmartPhoneDAOImpl implements SmartPhoneDAO {
 		query.setParameter("idApp", app.getId());
 		query.setParameter("idSmartphone", smartPhone.getId());
 		query.executeUpdate();
-		
+
 	}
 
 	@Override
 	public void rimuoviApp(SmartPhone smartPhone, App app) throws Exception {
-		Query query = entityManager
-				.createNativeQuery("DELETE FROM  smartphone_app  WHERE id_app = :idApp AND id_smartphone = :idSmartphone ");
+		Query query = entityManager.createNativeQuery(
+				"DELETE FROM  smartphone_app  WHERE id_app = :idApp AND id_smartphone = :idSmartphone ");
 		query.setParameter("idApp", app.getId());
 		query.setParameter("idSmartphone", smartPhone.getId());
 		query.executeUpdate();
@@ -84,12 +88,10 @@ public class SmartPhoneDAOImpl implements SmartPhoneDAO {
 	@Override
 	public SmartPhone caricaSingoloSmartphoneEagerFetchinAppConAppAssociate(Long id) throws Exception {
 		String jpql = "SELECT DISTINCT s FROM SmartPhone s  JOIN FETCH s.apps WHERE s.id = :id";
-	    TypedQuery<SmartPhone> query = entityManager.createQuery(jpql, SmartPhone.class);
-	    query.setParameter("id", id);
-	    SmartPhone smartphone = query.getSingleResult();
-	    return smartphone;
-		}
-
-	
+		TypedQuery<SmartPhone> query = entityManager.createQuery(jpql, SmartPhone.class);
+		query.setParameter("id", id);
+		SmartPhone smartphone = query.getSingleResult();
+		return smartphone;
+	}
 
 }

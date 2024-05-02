@@ -35,10 +35,9 @@ public class SmartPhone {
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "smartphone_app", joinColumns = @JoinColumn(name = "id_smartphone"), inverseJoinColumns = @JoinColumn(name = "id_app"))
 	private Set<App> apps = new HashSet<>();
-	
-	
+
 	public SmartPhone() {
-		
+
 	}
 
 	public SmartPhone(Long id, String marca, String modello, Float prezzo, String versioneOs) {
@@ -51,7 +50,7 @@ public class SmartPhone {
 
 	public SmartPhone(long id) {
 		this.id = id;
-				
+
 	}
 
 	public SmartPhone(long id, String versioneOs) {
